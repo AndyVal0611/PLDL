@@ -52,10 +52,8 @@ class Course_Outline_Input:
         total_of_units = obj2.get_tuition_fee_lecture(total_units)
 
         student_assessment = obj2.get_student_assesssment(adu_chronical, athletic, audio_visual_library, ausg,
-                                                          cultural_fee, energy_cost, guidance, insurance_fee,
-                                                          learning_management_system, library_fee, medical_dental,
-                                                          registration, rso, student_activities, student_nurturance,
-                                                          technology_fee, test_papers, downpayment)
+        cultural_fee, energy_cost, guidance, insurance_fee, learning_management_system, library_fee, medical_dental,
+        registration, rso, student_activities, student_nurturance, technology_fee, test_papers, downpayment)
 
         obj.total_units_calculation(subjects)
         obj.display_student_outline(subjects)
