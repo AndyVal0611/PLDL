@@ -117,7 +117,7 @@ class Employee:
         elif self.emp_gross_earnings >= 24250 and self.emp_gross_earnings <= 24749.99:
             self.sss_contribution = 900.00
         else:
-            self.sss_contribution = 900.00
+            self.sss_contribution = 900.0
 
     def emp_philhealth_contribution(self):
         # Setting conditions in getting Philhealth Contribution

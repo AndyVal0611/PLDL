@@ -1,0 +1,46 @@
+#input all the data
+import MidtermQuiz1
+
+obj = MidtermQuiz1.display_personal_info()
+self.customer_name = input("Name: ")
+self.address = input("Address: ")
+
+electric_bill = MidtermQuiz1.get_electric_bill_info()
+self.billing_period = input("Billing Period: ")
+self.billing_due_date = input("Billing Due Date: ")
+self.electric_meter_number = input("Electric Meter Number: ")
+self.meter_reading = input("Meter Reading Date: ")
+self.next_meter_reading = input("Next Meter Reading Date: ")
+self.current_reading = float(input("Current Reading (kWh): "))
+self.previous_reading = float(input("Previous Reading (kWh): "))
+self.customer_type = input("Customer Type (Residential/Commercial): ")
+self.actual_consumption = self.current_reading - self.previous_reading
+
+bill_computation = calculate_total_amount_due()
+print("\n\t\tYOUR ELECTRIC BILL")
+print("Billing Period:", billing_period)
+print("Due Date:", billing_due_date)
+print("Electric Meter Number:", electric_meter_number)
+print("Date of Meter Reading:", meter_reading)
+print("Date of Next Meter Reading:", next_meter_reading)
+print("Current Reading:", current_reading, "kWh")
+print("Previous Reading:", previous_reading, "kWh")
+print("Customer Type:", customer_type)
+print("Actual Consumption:", actual_consumption, "kWh")
+
+bill_computation = BillComputationSummary()
+print("\n\t\tBILL COMPUTATION SUMMARY")
+print("Previous Balance:", self.previous_remaining_balance)
+print("Generation Charge:", self.generation)
+print("Transmission Charge:", self.transmission)
+print("System Loss Charge:", self.system_loss)
+print("Distribution Charge:", self.distribution)
+print("Subsidies:", self.subsidies)
+print("Government Tax:", self.government_tax)
+print("Universal Charges:", self.universal_charges)
+print("FIT-All (Renewable):", self.fitan)
+print("Applied Credits:", self.applied_credits)
+print("Other Charges:", self.other_charges)
+print("Installment Due:", self.installment_due)
+print("\tTotal Amount Due: ₱", self.total_amount_due)
+
