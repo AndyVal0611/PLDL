@@ -130,7 +130,7 @@ combo_field1.place(x=858, y=330)
 combo_field1.current()
 
 #call image to display
-uploaded_image = my_gui_design.image_design('C:\\Users\\admin\\PycharmProjects\\LAB 3 FILES - VALDEZ\\PLDL01E - (VALDEZ)\\IMAGES\\LPUCavite.jpg', 222, 110, 200, 180)
+uploaded_image = my_gui_design.image_design('C:\\Users\\valde\\PycharmProjects\\LAB-3-FILES---VALDEZ\\IMAGES\\LPUCavite.jpg', 222, 110, 200, 180)
 
 #call for the button and place under the image
 uploadbutton = my_gui_design.button_design(263, 300)

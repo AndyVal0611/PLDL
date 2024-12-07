@@ -12,7 +12,7 @@ class MeralcoForm:
         self.root.configure(bg='white')
 
         # Load and set background image
-        self.set_background("C:\\Users\\admin\\PycharmProjects\\LAB 3 FILES - VALDEZ\\PLDL01E - (VALDEZ)\\IMAGES\\Meralco.jpg")
+        self.set_background("C:\\Users\\valde\\PycharmProjects\\LAB-3-FILES---VALDEZ\\IMAGES\\Meralco.jpg")
 
         # Frames and widgets
         self.create_frames()
