@@ -1,6 +1,6 @@
-# this class will input the codes fr Midterm_Exam
+# import or call Midterm_Exam
 
-from Midterm_Exam import Service_information, Metering_Billing_information
+import Midterm_Exam
 
 service_info_obj = Service_information()
 
