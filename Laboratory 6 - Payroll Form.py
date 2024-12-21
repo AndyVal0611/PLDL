@@ -129,7 +129,7 @@ class PayrollForm:
         for idx, field in enumerate(summary_fields):
             label = tk.Label(self.summary_frame, text=field, bg="lightyellow", font=("tahoma", 10))
             label.grid(row=idx, column=0, sticky="w", padx=10, pady=5)
-            entry = tk.Entry(self.summary_frame, width=25, font=("tahome", 10))
+            entry = tk.Entry(self.summary_frame, width=25, font=("tahoma", 10))
             entry.grid(row=idx, column=1, padx=10, pady=5)
 
     def create_button_section(self):
