@@ -2,30 +2,31 @@ import tkinter as tk
 from tkinter import ttk
 from PIL import Image, ImageTk
 
-root = tk.Tk()
-root.title('LPU Cavite Enrollment Assessment Form')
-root.geometry('1190x1040')
+# Main window
+window = tk.Tk()
+window.title('LPU Cavite Enrollment Assessment Form')
+window.geometry('1190x1040')
 
 # Create a class for the overall GUI
 class DesignGUI:
     def label(self, text, x, y, font=('Palatino', 10, 'bold'), width=None, anchor='w'):
-        lbl = tk.Label(root, text=text, font=font, anchor=anchor)
+        lbl = tk.Label(window, text=text, font=font, anchor=anchor)
         lbl.place(x=x, y=y, width=width)
 
     def entry(self, x, y, width=20):
-        txt = tk.Entry(root, width=width, font=('Palatino', 10))
+        txt = tk.Entry(window, width=width, font=('Palatino', 10))
         txt.place(x=x, y=y)
         return txt
 
     def button(self, text, x, y, width=10, command=None, bg=None, fg=None):
-        btn = tk.Button(root, text=text, width=width, command=command, font=('Calibri', 12, 'bold'), bg=bg, fg=fg)
+        btn = tk.Button(window, text=text, width=width, command=command, font=('Calibri', 12, 'bold'), bg=bg, fg=fg)
         btn.place(x=x, y=y)
 
     def separator(self, x, y, width=1150):
-        line = tk.Canvas(root, width=width, height=2, bg='black', bd=0, highlightthickness=0)
+        line = tk.Canvas(window, width=width, height=2, bg='black', bd=0, highlightthickness=0)
         line.place(x=x, y=y)
 
-# Instantiation of DesignGUI
+# Instantiation for DesignGUI
 design = DesignGUI()
 
 # Function to load and display the logo
@@ -37,14 +38,14 @@ def load_logo():
 
 # Header Section
 logo = load_logo()
-logo_label = tk.Label(root, image=logo, font=('Palatino', 10))
+logo_label = tk.Label(window, image=logo, font=('Palatino', 10))
 logo_label.place(x=278, y=27)
 
-lyceum_label = tk.Label(root, text='LYCEUM OF THE PHILIPPINES UNIVERSITY', font=('Palatino', 16, 'bold'))
+lyceum_label = tk.Label(window, text='LYCEUM OF THE PHILIPPINES UNIVERSITY', font=('Palatino', 16, 'bold'))
 lyceum_label.place(x=382, y=20)
-semester_label = tk.Label(root, text='1st Semester, AY 2024-2025', font=('Palatino', 12))
+semester_label = tk.Label(window, text='1st Semester, AY 2024-2025', font=('Palatino', 12))
 semester_label.place(x=512, y=60)
-assessment_label = tk.Label(root, text='ENROLLMENT ASSESSMENT FORM', font=('Palatino', 14))
+assessment_label = tk.Label(window, text='ENROLLMENT ASSESSMENT FORM', font=('Palatino', 14))
 assessment_label.place(x=447, y=90)
 
 # Student Information Section
@@ -60,8 +61,9 @@ college = design.entry(820, 180, width=40)
 # Class Schedule Section
 design.label('CLASS SCHEDULE', 20, 230, font=('Palatino', 12, 'bold'))
 
+# Create columns
 columns = ['Subject Code', 'Course Description', 'Section', 'Time', 'Days', 'Room', 'Unit']
-tree = ttk.Treeview(root, columns=columns, show='headings', height=10)
+tree = ttk.Treeview(window, columns=columns, show='headings', height=10)
 
 # Adjusting the column widths
 tree.heading('Subject Code', text='Subject Code')
@@ -157,7 +159,7 @@ design.label('3. All Fees are subject to audit.', 40, 888, font=('Palatino', 9),
 design.label('Signature over Printed Name and Date', 475, 948, font=('Palatino', 10, 'bold'), anchor='w')
 
 # Creating a text box for signature
-signature_box = tk.Entry(root, font=('Palatino', 9), width=40)
+signature_box = tk.Entry(window, font=('Palatino', 9), width=40)
 signature_box.place(x=462, y=925)
 
 # Buttons
@@ -165,4 +167,4 @@ design.button('SUBMIT', 407, 995, width=15, bg='green', fg='white')
 design.button('CANCEL', 632, 995, width=15, bg='red', fg='white')
 
 # Runs the code
-root.mainloop()
+window.mainloop()

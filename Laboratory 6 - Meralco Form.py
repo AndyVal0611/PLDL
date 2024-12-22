@@ -2,30 +2,31 @@ import tkinter as tk
 from tkinter import ttk
 from PIL import Image, ImageTk
 
-root = tk.Tk()
-root.title('Meralco Bill Form')
-root.geometry('650x1033')
+# Main window
+window = tk.Tk()
+window.title('Meralco Bill Form')
+window.geometry('650x1033')
 
-# Create a class for the overall GUI Design
+# Create a class for the overall GUI
 class DesignGUI:
     def __init__(self):
         image1 = ''
 
     def label(self, text, x, y, font=('Arial', 10), width=None, anchor='w', fg_color='black', bg_color=None):
-        lbl = tk.Label(root, text=text, font=font, anchor=anchor, fg=fg_color, bg=bg_color if bg_color else root.cget('background'))
+        lbl = tk.Label(window, text=text, font=font, anchor=anchor, fg=fg_color, bg=bg_color if bg_color else window.cget('background'))
         lbl.place(x=x, y=y, width=width)
 
     def entry(self, x, y, width=20):
-        txt = tk.Entry(root, width=width, font=('Arial', 10))
+        txt = tk.Entry(window, width=width, font=('Arial', 10))
         txt.place(x=x, y=y)
         return txt
 
     def button(self, text, x, y, width=7, command=None):
-        btn = tk.Button(root, text=text, width=width, command=command, font=('Arial', 10, 'bold'), bg='#d44713', fg='white')
+        btn = tk.Button(window, text=text, width=width, command=command, font=('Arial', 10, 'bold'), bg='#d44713', fg='white')
         btn.place(x=x, y=y)
 
     def separator(self, x, y, width=610):
-        line = tk.Canvas(root, width=width, height=2, bg='black', bd=0, highlightthickness=0)
+        line = tk.Canvas(window, width=width, height=2, bg='black', bd=0, highlightthickness=0)
         line.place(x=x, y=y)
 
     def set_logo_and_header(self, x, y, logo_path):
@@ -36,7 +37,7 @@ class DesignGUI:
             logo_img = ImageTk.PhotoImage(img)
 
             # Add the image
-            logo_label = tk.Label(root, image=logo_img, bg='#f8f8f8')
+            logo_label = tk.Label(window, image=logo_img, bg='#f8f8f8')
             logo_label.image = logo_img  # Keep a reference to prevent garbage collection
             logo_label.place(x=x, y=y)
 
@@ -56,10 +57,11 @@ class DesignGUI:
         except Exception as e:
             print('Error loading logo:', e)
 
+# Instantiation for DesignGUI
 design = DesignGUI()
 
 # Set background color
-root.config(bg='white')
+window.config(bg='white')
 
 # Header Section with logo
 logo_path = 'C:\\Users\\valde\\Documents\\GitHub\\LAB-3-FILES---VALDEZ\\LAB-3-FILES---VALDEZ\\IMAGES\\Meralco Logo.png'
@@ -76,7 +78,7 @@ due_date = design.entry(100, 188, width=20)
 design.label('Total Amount Due:', 300, 188, font=('Arial', 10, 'bold'))
 total_amount_due = design.entry(436, 188, width=20)
 
-design.separator(20, 220)
+design.separator(20, 220)   # Separated by using lines to make the form organized
 
 # Service Info Section
 design.label('SERVICE INFO', 20, 230, font=('Arial', 12, 'bold'))
@@ -90,7 +92,7 @@ contact_name = design.entry(300, 310, width=30)
 design.label('Service Address:', 20, 335, font=('Arial', 9))
 service_address = design.entry(300, 335, width=30)
 
-design.separator(20, 370)
+design.separator(20, 370)   # Separated by using lines to make the form organized
 
 # Billing Info Section
 design.label('BILLING INFO', 20, 380, font=('Arial', 12, 'bold'))
@@ -106,7 +108,7 @@ total_kwh = design.entry(300, 485, width=30)
 design.label('Next Meter Reading:', 20, 510, font=('Arial', 9))
 next_meter_reading = design.entry(300, 510, width=30)
 
-design.separator(20, 545)
+design.separator(20, 545)   # Separated by using lines to make the form organized
 
 # Bill Computation Summary Section
 design.label('BILL COMPUTATION SUMMARY', 20, 555, font=('Arial', 12, 'bold'))
@@ -140,7 +142,7 @@ installment_due = design.entry(300, 885, width=30)
 design.label('Total Amount Due:', 20, 910, font=('Arial', 9, 'bold'))
 total_amount_due = design.entry(300, 910, width=30)
 
-design.separator(20, 945)
+design.separator(20, 945)   # Separated by using lines to make the form organized
 
 # Footer Section
 design.label('Please pay at any Meralco Business Center or through any accredited payment partner before the due date.', 28, 955, font=('Arial', 9, 'italic'), anchor='center', fg_color='#a43404')
@@ -150,4 +152,4 @@ design.button('PRINT', 168, 992, width=15)
 design.button('CLOSE', 350, 992, width=15)
 
 # Runs the code
-root.mainloop()
+window.mainloop()
