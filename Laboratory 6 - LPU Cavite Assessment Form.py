@@ -21,6 +21,10 @@ class DesignGUI:
         btn = tk.Button(root, text=text, width=width, command=command, font=('Calibri', 12, 'bold'), bg=bg, fg=fg)
         btn.place(x=x, y=y)
 
+    def separator(self, x, y, width=1150):
+        line = tk.Canvas(root, width=width, height=2, bg='black', bd=0, highlightthickness=0)
+        line.place(x=x, y=y)
+
 # Instantiation of DesignGUI
 design = DesignGUI()
 
@@ -34,20 +38,20 @@ def load_logo():
 # Header Section
 logo = load_logo()
 logo_label = tk.Label(root, image=logo, font=('Palatino', 10))
-logo_label.place(x=260, y=20)
+logo_label.place(x=278, y=27)
 
 lyceum_label = tk.Label(root, text='LYCEUM OF THE PHILIPPINES UNIVERSITY', font=('Palatino', 16, 'bold'))
-lyceum_label.place(x=375, y=20)
+lyceum_label.place(x=382, y=20)
 semester_label = tk.Label(root, text='1st Semester, AY 2024-2025', font=('Palatino', 12))
-semester_label.place(x=505, y=60)
+semester_label.place(x=512, y=60)
 assessment_label = tk.Label(root, text='ENROLLMENT ASSESSMENT FORM', font=('Palatino', 14))
-assessment_label.place(x=440, y=90)
+assessment_label.place(x=447, y=90)
 
 # Student Information Section
 design.label('STUDENT NUMBER:', 20, 150)
-student_number = design.entry(150, 150, width=40)
+student_number = design.entry(180, 150, width=40)
 design.label('NAME:', 20, 180)
-student_name = design.entry(150, 180, width=40)
+student_name = design.entry(180, 180, width=40)
 design.label('COURSE:', 720, 150)
 course = design.entry(820, 150, width=40)
 design.label('COLLEGE:', 720, 180)
@@ -97,19 +101,21 @@ tree.place(x=20, y=260)
 # Fees Section
 design.label('TOTAL UNITS', 49, 492, font=('Palatino', 10, 'bold'))
 design.label('26', 1111, 492, font=('Palatino', 10, 'bold'))
-design.label('TUITION FEE', 49, 520, font=('Palatino', 10, 'bold'))
+design.label('TUITION FEE', 20, 520, font=('Palatino', 10, 'bold'))
 design.label('39,156.00', 950, 520, font=('Palatino', 10))
-design.label('TOTAL MISCELLANEOUS FEES', 49, 540, font=('Palatino', 10, 'bold'))
+design.label('TOTAL MISCELLANEOUS FEES', 20, 540, font=('Palatino', 10, 'bold'))
 design.label('12,960.00', 950, 540, font=('Palatino', 10))
 
+design.separator(20, 564)   # Separated by using lines to make the form organized
+
 # Laboratory Fees
-design.label('LABORATORY AND OTHER FEES', 20, 576, font=('Palatino', 12, 'bold'))
+design.label('LABORATORY AND OTHER FEES', 20, 572, font=('Palatino', 12, 'bold'))
 
-design.label('OTHER FEES', 20, 600, font=('Palatino', 10))
-design.label('Exam Booklet', 20, 620, font=('Palatino', 10))
-design.label('540.00', 430, 620, font=('Palatino', 10))
+design.label('OTHER FEES', 20, 596, font=('Palatino', 10))
+design.label('Exam Booklet', 20, 616, font=('Palatino', 10))
+design.label('540.00', 418, 616, font=('Palatino', 10))
 
-design.label('LABORATORY FEES', 590, 600, font=('Palatino', 10))
+design.label('LABORATORY FEES', 590, 596, font=('Palatino', 10))
 fees = [
     ('LMS Fee', 540.00),
     ('Computer Laboratory Fee', 3859.00),
@@ -120,11 +126,15 @@ fees = [
 for i, (desc, fee) in enumerate(fees):
     # Format the fee with commas
     formatted_fee = f'{fee:,.2f}'  # Adds commas for thousands
-    design.label(desc, 590, 620 + i * 20, font=('Palatino', 10))
-    design.label(formatted_fee, 950, 620 + i * 20, font=('Palatino', 10))
+    design.label(desc, 590, 616 + i * 20, font=('Palatino', 10))
+    design.label(formatted_fee, 950, 616 + i * 20, font=('Palatino', 10))
 
-design.label('TOTAL LABORATORY AND OTHER FEES', 20, 706, font=('Palatino', 12, 'bold'))
-design.label('16,819.00', 950, 706, font=('Palatino', 10))
+design.separator(20, 706)   # Separated by using lines to make the form organized
+
+design.label('TOTAL LABORATORY AND OTHER FEES', 20, 708, font=('Palatino', 12, 'bold'))
+design.label('16,819.00', 950, 708, font=('Palatino', 10))
+
+design.separator(20, 733)   # Separated by using lines to make the form organized
 
 # Total Assessment, Additional Charges, and Total Amount Due for the Tuition Fee
 design.label('TOTAL ASSESSMENT', 590,740, font=('Palatino', 10, 'bold'))
@@ -134,22 +144,25 @@ design.label('1,200.00', 950, 762, font=('Palatino', 10))
 design.label('TOTAL AMOUNT DUE', 590, 782, font=('Palatino', 10, 'bold'))
 design.label('70,135.00', 950, 782, font=('Palatino', 10))
 
+design.separator(20, 803)  # Separated by using lines to make the form organized
+
 # Acknowledgement and its content
-design.label('ACKNOWLEDGEMENT (to be signed by student)', 20, 808, font=('Palatino', 9, 'bold'), anchor='w')
-design.label('1. That I am considered officially enrolled for the semester only.', 40, 838, font=('Palatino', 9), anchor='w')
-design.label('2. That any unpaid balance shall be paid in full, including the applicable penalties, prior to re-enrollment or issuance of any clearance for graduation or transfer credential.', 40, 858, font=('Palatino', 9), anchor='w')
-design.label('3. All Fees are subject to audit.', 40, 878, font=('Palatino', 9), anchor='w')
+design.label('ACKNOWLEDGEMENT (to be signed by student)', 20, 810, font=('Palatino', 9, 'bold'), anchor='w')
+design.label('I understand and agree to the following:', 20, 830, font=('Palatino', 9), anchor='w')
+design.label('1. That I am considered officially enrolled for the semester only.', 40, 848, font=('Palatino', 9), anchor='w')
+design.label('2. That any unpaid balance shall be paid in full, including the applicable penalties, prior to re-enrollment or issuance of any clearance for graduation or transfer credential.', 40, 868, font=('Palatino', 9), anchor='w')
+design.label('3. All Fees are subject to audit.', 40, 888, font=('Palatino', 9), anchor='w')
 
 # Signature label
-design.label('Signature over Printed Name and Date', 488, 940, font=('Palatino', 10, 'bold'), anchor='w')
+design.label('Signature over Printed Name and Date', 475, 948, font=('Palatino', 10, 'bold'), anchor='w')
 
 # Creating a text box for signature
 signature_box = tk.Entry(root, font=('Palatino', 9), width=40)
-signature_box.place(x=475, y=910)
+signature_box.place(x=462, y=925)
 
 # Buttons
-design.button('SUBMIT', 432, 995, width=15, bg='green', fg='white')
-design.button('CANCEL', 639, 995, width=15, bg='red', fg='white')
+design.button('SUBMIT', 407, 995, width=15, bg='green', fg='white')
+design.button('CANCEL', 632, 995, width=15, bg='red', fg='white')
 
 # Runs the code
 root.mainloop()
