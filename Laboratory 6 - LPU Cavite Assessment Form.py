@@ -6,6 +6,7 @@ root = tk.Tk()
 root.title('LPU Cavite Enrollment Assessment Form')
 root.geometry('1190x1040')
 
+# Create a class for the overall GUI
 class DesignGUI:
     def label(self, text, x, y, font=('Palatino', 10, 'bold'), width=None, anchor='w'):
         lbl = tk.Label(root, text=text, font=font, anchor=anchor)
@@ -20,7 +21,7 @@ class DesignGUI:
         btn = tk.Button(root, text=text, width=width, command=command, font=('Calibri', 12, 'bold'), bg=bg, fg=fg)
         btn.place(x=x, y=y)
 
-# Create an instance of DesignGUI
+# Instantiation of DesignGUI
 design = DesignGUI()
 
 # Function to load and display the logo
@@ -37,23 +38,18 @@ logo_label.place(x=260, y=20)
 
 lyceum_label = tk.Label(root, text='LYCEUM OF THE PHILIPPINES UNIVERSITY', font=('Palatino', 16, 'bold'))
 lyceum_label.place(x=375, y=20)
-
 semester_label = tk.Label(root, text='1st Semester, AY 2024-2025', font=('Palatino', 12))
 semester_label.place(x=505, y=60)
-
 assessment_label = tk.Label(root, text='ENROLLMENT ASSESSMENT FORM', font=('Palatino', 14))
 assessment_label.place(x=440, y=90)
 
 # Student Information Section
 design.label('STUDENT NUMBER:', 20, 150)
 student_number = design.entry(150, 150, width=40)
-
 design.label('NAME:', 20, 180)
 student_name = design.entry(150, 180, width=40)
-
 design.label('COURSE:', 720, 150)
 course = design.entry(820, 150, width=40)
-
 design.label('COLLEGE:', 720, 180)
 college = design.entry(820, 180, width=40)
 
@@ -101,10 +97,8 @@ tree.place(x=20, y=260)
 # Fees Section
 design.label('TOTAL UNITS', 49, 492, font=('Palatino', 10, 'bold'))
 design.label('26', 1111, 492, font=('Palatino', 10, 'bold'))
-
 design.label('TUITION FEE', 49, 520, font=('Palatino', 10, 'bold'))
 design.label('39,156.00', 950, 520, font=('Palatino', 10))
-
 design.label('TOTAL MISCELLANEOUS FEES', 49, 540, font=('Palatino', 10, 'bold'))
 design.label('12,960.00', 950, 540, font=('Palatino', 10))
 
@@ -132,25 +126,21 @@ for i, (desc, fee) in enumerate(fees):
 design.label('TOTAL LABORATORY AND OTHER FEES', 20, 706, font=('Palatino', 12, 'bold'))
 design.label('16,819.00', 950, 706, font=('Palatino', 10))
 
-
+# Total Assessment, Additional Charges, and Total Amount Due for the Tuition Fee
 design.label('TOTAL ASSESSMENT', 590,740, font=('Palatino', 10, 'bold'))
 design.label('68,935.00', 950, 740, font=('Palatino', 10))
-
 design.label('ADD: INSTALLMENT CHARGE', 590, 762, font=('Palatino', 10))
 design.label('1,200.00', 950, 762, font=('Palatino', 10))
-
 design.label('TOTAL AMOUNT DUE', 590, 782, font=('Palatino', 10, 'bold'))
 design.label('70,135.00', 950, 782, font=('Palatino', 10))
 
-# Title for Acknowledgment (bold)
+# Acknowledgement and its content
 design.label('ACKNOWLEDGEMENT (to be signed by student)', 20, 808, font=('Palatino', 9, 'bold'), anchor='w')
-
-# Acknowledgment content
 design.label('1. That I am considered officially enrolled for the semester only.', 40, 838, font=('Palatino', 9), anchor='w')
 design.label('2. That any unpaid balance shall be paid in full, including the applicable penalties, prior to re-enrollment or issuance of any clearance for graduation or transfer credential.', 40, 858, font=('Palatino', 9), anchor='w')
 design.label('3. All Fees are subject to audit.', 40, 878, font=('Palatino', 9), anchor='w')
 
-# Signature label (bold)
+# Signature label
 design.label('Signature over Printed Name and Date', 488, 940, font=('Palatino', 10, 'bold'), anchor='w')
 
 # Creating a text box for signature
@@ -161,4 +151,5 @@ signature_box.place(x=475, y=910)
 design.button('SUBMIT', 432, 995, width=15, bg='green', fg='white')
 design.button('CANCEL', 639, 995, width=15, bg='red', fg='white')
 
+# Runs the code
 root.mainloop()
