@@ -9,21 +9,27 @@ window.geometry('1190x1040')
 
 # Create a class for the overall GUI
 class DesignGUI:
-    def label(self, text, x, y, font=('Palatino', 10, 'bold'), width=None, anchor='w'):
-        lbl = tk.Label(window, text=text, font=font, anchor=anchor)
+    def __init__(self):
+        # Initialize default attributes
+        self.font = ('Palatino', 10, 'bold')  # Default font style
+        self.window = window  # Store reference to the main window
+
+    def label(self, text, x, y, font=None, width=None, anchor='w'):
+        font = font or self.font  # Use default font if not specified
+        lbl = tk.Label(self.window, text=text, font=font, anchor=anchor)
         lbl.place(x=x, y=y, width=width)
 
     def entry(self, x, y, width=20):
-        txt = tk.Entry(window, width=width, font=('Palatino', 10))
+        txt = tk.Entry(self.window, width=width, font=self.font)
         txt.place(x=x, y=y)
         return txt
 
     def button(self, text, x, y, width=10, command=None, bg=None, fg=None):
-        btn = tk.Button(window, text=text, width=width, command=command, font=('Calibri', 12, 'bold'), bg=bg, fg=fg)
+        btn = tk.Button(self.window, text=text, width=width, command=command, font=('Calibri', 12, 'bold'), bg=bg, fg=fg)
         btn.place(x=x, y=y)
 
     def separator(self, x, y, width=1150):
-        line = tk.Canvas(window, width=width, height=2, bg='black', bd=0, highlightthickness=0)
+        line = tk.Canvas(self.window, width=width, height=2, bg='black', bd=0, highlightthickness=0)
         line.place(x=x, y=y)
 
 # Instantiation for DesignGUI
@@ -155,12 +161,12 @@ design.label('1. That I am considered officially enrolled for the semester only.
 design.label('2. That any unpaid balance shall be paid in full, including the applicable penalties, prior to re-enrollment or issuance of any clearance for graduation or transfer credential.', 40, 868, font=('Palatino', 9), anchor='w')
 design.label('3. All Fees are subject to audit.', 40, 888, font=('Palatino', 9), anchor='w')
 
-# Signature label
-design.label('Signature over Printed Name and Date', 475, 948, font=('Palatino', 10, 'bold'), anchor='w')
-
 # Creating a text box for signature
 signature_box = tk.Entry(window, font=('Palatino', 9), width=40)
 signature_box.place(x=462, y=925)
+
+# Signature label
+design.label('Signature over Printed Name and Date', 475, 948, font=('Palatino', 10, 'bold'), anchor='w')
 
 # Buttons
 design.button('SUBMIT', 407, 995, width=15, bg='green', fg='white')
