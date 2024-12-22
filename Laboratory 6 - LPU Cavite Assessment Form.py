@@ -1,167 +1,164 @@
 import tkinter as tk
-from tkinter import *
-from PIL import Image, ImageTk
 from tkinter import ttk
+from PIL import Image, ImageTk
 
-# Initialize the main window
-window = tk.Tk()
-window.title('Lyceum of the Philippines University Cavite - Assessment Form')
-window.geometry('1520x900')
+root = tk.Tk()
+root.title('LPU Cavite Enrollment Assessment Form')
+root.geometry('1190x1040')
 
-# Load and set the background image
-background_image_path = 'C:\\Users\\valde\\Documents\\GitHub\\LAB-3-FILES---VALDEZ\\LAB-3-FILES---VALDEZ\\IMAGES\\LPU Cavite Background.jpg'
-background_image = Image.open(background_image_path)
-background_photo = ImageTk.PhotoImage(background_image.resize((1520, 900)))
+class DesignGUI:
+    def label(self, text, x, y, font=('Palatino', 10, 'bold'), width=None, anchor='w'):
+        lbl = tk.Label(root, text=text, font=font, anchor=anchor)
+        lbl.place(x=x, y=y, width=width)
 
-# Create a label to hold the background image
-background_label = Label(window, image=background_photo)
-background_label.place(x=0, y=0, relwidth=1, relheight=1)
+    def entry(self, x, y, width=20):
+        txt = tk.Entry(root, width=width, font=('Palatino', 10))
+        txt.place(x=x, y=y)
+        return txt
 
-# Create the header
-header = Frame(window, width=2000, height=120, bg='maroon')
-header.place(x=0, y=0)
+    def button(self, text, x, y, width=10, command=None, bg=None, fg=None):
+        btn = tk.Button(root, text=text, width=width, command=command, font=('Calibri', 12, 'bold'), bg=bg, fg=fg)
+        btn.place(x=x, y=y)
+
+# Create an instance of DesignGUI
+design = DesignGUI()
+
+# Function to load and display the logo
+def load_logo():
+    logo_path = 'C:\\Users\\valde\\Documents\\GitHub\\LAB-3-FILES---VALDEZ\\LAB-3-FILES---VALDEZ\\IMAGES\\LPU Logo.jpg'
+    logo_image = Image.open(logo_path)
+    logo_image = logo_image.resize((80, 80), Image.Resampling.LANCZOS)
+    return ImageTk.PhotoImage(logo_image)
+
+# Header Section
+logo = load_logo()
+logo_label = tk.Label(root, image=logo, font=('Palatino', 10))
+logo_label.place(x=260, y=20)
+
+lyceum_label = tk.Label(root, text='LYCEUM OF THE PHILIPPINES UNIVERSITY', font=('Palatino', 16, 'bold'))
+lyceum_label.place(x=375, y=20)
+
+semester_label = tk.Label(root, text='1st Semester, AY 2024-2025', font=('Palatino', 12))
+semester_label.place(x=505, y=60)
+
+assessment_label = tk.Label(root, text='ENROLLMENT ASSESSMENT FORM', font=('Palatino', 14))
+assessment_label.place(x=440, y=90)
+
+# Student Information Section
+design.label('STUDENT NUMBER:', 20, 150)
+student_number = design.entry(150, 150, width=40)
+
+design.label('NAME:', 20, 180)
+student_name = design.entry(150, 180, width=40)
+
+design.label('COURSE:', 720, 150)
+course = design.entry(820, 150, width=40)
+
+design.label('COLLEGE:', 720, 180)
+college = design.entry(820, 180, width=40)
+
+# Class Schedule Section
+design.label('CLASS SCHEDULE', 20, 230, font=('Palatino', 12, 'bold'))
+
+columns = ['Subject Code', 'Course Description', 'Section', 'Time', 'Days', 'Room', 'Unit']
+tree = ttk.Treeview(root, columns=columns, show='headings', height=10)
+
+# Adjusting the column widths
+tree.heading('Subject Code', text='Subject Code')
+tree.heading('Course Description', text='Course Description')
+tree.heading('Section', text='Section')
+tree.heading('Time', text='Time')
+tree.heading('Days', text='Days')
+tree.heading('Room', text='Room')
+tree.heading('Unit', text='Unit')
+
+tree.column('Subject Code', width=150, anchor='center')
+tree.column('Course Description', width=250, anchor='center')
+tree.column('Section', width=250, anchor='center')
+tree.column('Time', width=150, anchor='center')
+tree.column('Days', width=100, anchor='center')
+tree.column('Room', width=150, anchor='center')
+tree.column('Unit', width=100, anchor='center')
+
+subjects = [
+    ('CFPL01E', 'Computer Fundamentals and Programming', 'CPE 201', '07:00AM-10:00AM', 'M/W', 'C-202', 2),
+    ('DMTN01E', 'Discrete Mathematics', 'CPE 201', '02:30PM-05:30PM', 'S', 'L-205', 3),
+    ('ECRL01E', 'Electrical Circuits 1', 'CPE 201', '10:00AM-11:30AM', 'M/W', 'L-205', 4),
+    ('', '', '', '04:30PM-07:30PM', 'W', 'C-502'),
+    ('EECN41E', 'Engineering Economy', 'CPE 201', '02:30PM-05:30PM', 'F', 'L-205', 3),
+    ('ELMN01E', 'Electromagnetics', 'CPE 201', '01:00PM-04:00PM', 'M', 'L-205', 4),
+    ('ETHN01G', 'Ethics', 'CPE 201', '05:30PM-07:00PM', 'F/S', 'C-601', 3),
+    ('MTHN31E', 'Differential Equations', 'CPE 201', '07:00AM-10:00AM', 'F', 'L-205', 3),
+    ('PATHFIT3', 'Physical Activities Toward Health-Fit 3', 'CPE 201', '11:00AM-01:00PM', 'F', 'SRDB1', 2),
+    ('PLDL01E', 'Programming Logic and Design', 'CPE 201', '07:00AM-01:00PM', 'S', 'C-203', 2),
+]
+
+for subject in subjects:
+    tree.insert('', 'end', values=subject)
+
+tree.place(x=20, y=260)
+
+# Fees Section
+design.label('TOTAL UNITS', 49, 492, font=('Palatino', 10, 'bold'))
+design.label('26', 1111, 492, font=('Palatino', 10, 'bold'))
+
+design.label('TUITION FEE', 49, 520, font=('Palatino', 10, 'bold'))
+design.label('39,156.00', 950, 520, font=('Palatino', 10))
+
+design.label('TOTAL MISCELLANEOUS FEES', 49, 540, font=('Palatino', 10, 'bold'))
+design.label('12,960.00', 950, 540, font=('Palatino', 10))
+
+# Laboratory Fees
+design.label('LABORATORY AND OTHER FEES', 20, 576, font=('Palatino', 12, 'bold'))
+
+design.label('OTHER FEES', 20, 600, font=('Palatino', 10))
+design.label('Exam Booklet', 20, 620, font=('Palatino', 10))
+design.label('540.00', 430, 620, font=('Palatino', 10))
+
+design.label('LABORATORY FEES', 590, 600, font=('Palatino', 10))
+fees = [
+    ('LMS Fee', 540.00),
+    ('Computer Laboratory Fee', 3859.00),
+    ('Computer Laboratory Fee 2', 7718.00),
+    ('Professional Engineering Laboratory Fee', 3716.00),
+]
+
+for i, (desc, fee) in enumerate(fees):
+    # Format the fee with commas
+    formatted_fee = f'{fee:,.2f}'  # Adds commas for thousands
+    design.label(desc, 590, 620 + i * 20, font=('Palatino', 10))
+    design.label(formatted_fee, 950, 620 + i * 20, font=('Palatino', 10))
+
+design.label('TOTAL LABORATORY AND OTHER FEES', 20, 706, font=('Palatino', 12, 'bold'))
+design.label('16,819.00', 950, 706, font=('Palatino', 10))
 
 
-class design_gui_interface:
-    def __init__(self):
-        image1 = ''
+design.label('TOTAL ASSESSMENT', 590,740, font=('Palatino', 10, 'bold'))
+design.label('68,935.00', 950, 740, font=('Palatino', 10))
 
-    def frames(self, x, y, width=1100, height=160):
-        self.frame = Frame(window, width=width, height=height, border=0, bg='#FF9999')
-        self.frame.place(x=x, y=y)
+design.label('ADD: INSTALLMENT CHARGE', 590, 762, font=('Palatino', 10))
+design.label('1,200.00', 950, 762, font=('Palatino', 10))
 
-    def heading_design(self, x, y, text_value):
-        self.heading = Label(window, text=text_value, fg='white', bg='maroon', font=('Palatino', 28, 'bold'))
-        self.heading.place(x=x, y=y)
+design.label('TOTAL AMOUNT DUE', 590, 782, font=('Palatino', 10, 'bold'))
+design.label('70,135.00', 950, 782, font=('Palatino', 10))
 
-    def textbox_design1(self, x, y):
-        self.textbox = Text(window, width=25, height=1, fg='black', bg='white')
-        self.textbox.place(x=x, y=y)
-        return self.textbox
+# Title for Acknowledgment (bold)
+design.label('ACKNOWLEDGEMENT (to be signed by student)', 20, 808, font=('Palatino', 9, 'bold'), anchor='w')
 
-    def textbox_design2(self, x, y):
-        self.textbox = Text(window, width=31, height=1, fg='black', bg='white', font=('Calibri', 11, 'bold'))
-        self.textbox.place(x=x, y=y)
-        return self.textbox
+# Acknowledgment content
+design.label('1. That I am considered officially enrolled for the semester only.', 40, 838, font=('Palatino', 9), anchor='w')
+design.label('2. That any unpaid balance shall be paid in full, including the applicable penalties, prior to re-enrollment or issuance of any clearance for graduation or transfer credential.', 40, 858, font=('Palatino', 9), anchor='w')
+design.label('3. All Fees are subject to audit.', 40, 878, font=('Palatino', 9), anchor='w')
 
-    def label_design(self, x, y, text_value):
-        self.label = Label(window, text=text_value, bg='#FF9999', font=('Calibri', 10))
-        self.label.place(x=x, y=y)
+# Signature label (bold)
+design.label('Signature over Printed Name and Date', 488, 940, font=('Palatino', 10, 'bold'), anchor='w')
 
-    def button_design(self, x, y):
-        self.upload_button = Button(window, width=15, pady=7, text='Choose File', bg='maroon', fg='white', cursor='hand2',
-                                    border=0)
-        self.upload_button.place(x=x, y=y)
-        return self.upload_button
+# Creating a text box for signature
+signature_box = tk.Entry(root, font=('Palatino', 9), width=40)
+signature_box.place(x=475, y=910)
 
-    def image_design(self, image_location, x, y, length, width):
-        self.image = Image.open(image_location)
-        self.bck_pic = ImageTk.PhotoImage(self.image.resize((length, width)))
-        self.lbl = Label(window, image=self.bck_pic)
-        self.lbl.image = self.bck_pic  # Prevent garbage collection
-        self.lbl.place(x=x, y=y)
+# Buttons
+design.button('SUBMIT', 432, 995, width=15, bg='green', fg='white')
+design.button('CANCEL', 639, 995, width=15, bg='red', fg='white')
 
-
-# Displaying the frames created
-# Instantiation of the class
-my_gui_design = design_gui_interface()
-
-# Call frames attribute within the class named as design_gui_interface
-# Call for frame 1
-my_gui_design.heading_design(450, 20, 'LYCEUM OF THE PHILIPPINES UNIVERSITY')
-my_gui_design.frames(200, 220)
-
-# Add 'Cavite Campus' below the main heading, aligned to the left
-cavite_label = Label(
-    window,
-    text='Cavite Campus',
-    fg='white',
-    bg='maroon',
-    font=('Century Gothic', 15)
-)
-cavite_label.place(x=450, y=70)  # Adjusted x-coordinate to match the heading
-
-# Call for frame 2
-my_gui_design.frames(200, 390)
-
-# Call for frame 3
-my_gui_design.frames(200, 560)
-
-# Textbox in first frame
-firstnametxt = my_gui_design.textbox_design1(440, 262)
-middle_nametxt = my_gui_design.textbox_design1(x=649, y=262)
-surnametxt = my_gui_design.textbox_design1(x=858, y=262)
-suffix_txt = my_gui_design.textbox_design1(1067, 262)
-date_of_birthtxt = my_gui_design.textbox_design1(440, 330)
-nationalitytxt = my_gui_design.textbox_design1(1067, 330)
-
-# Display in second frame
-departmentxt = my_gui_design.textbox_design2(232, 500)
-designationtxt = my_gui_design.textbox_design2(495, 500)
-employee_statustxt = my_gui_design.textbox_design2(760, 500)
-employee_numbertxt = my_gui_design.textbox_design2(1025, 500)
-contact_numbertxt = my_gui_design.textbox_design2(232, 435)
-email_addresstxt = my_gui_design.textbox_design2(495, 435)
-other_social_mediatxt = my_gui_design.textbox_design2(760, 435)
-social_media_accounttxt = my_gui_design.textbox_design2(1025, 435)
-
-# Display in third frame
-address_line1txt = my_gui_design.textbox_design2(232, 600)
-address_line2txt = my_gui_design.textbox_design2(495, 600)
-barangaytxt = my_gui_design.textbox_design2(760, 600)
-municipalitytxt = my_gui_design.textbox_design2(1025, 600)
-province_txt = my_gui_design.textbox_design2(232, 670)
-zip_codetxt = my_gui_design.textbox_design2(760, 670)
-countrytxt = my_gui_design.textbox_design2(495, 670)
-picturepathtxt = my_gui_design.textbox_design2(1025, 670)
-
-# Textbox label for first frame
-first_name_lbl = my_gui_design.label_design(440, 235, 'Firstname')
-middle_name_lbl = my_gui_design.label_design(650, 235, 'Middlename')
-surname_lbl = my_gui_design.label_design(858, 235, 'Surname')
-suffix_lbl = my_gui_design.label_design(1067, 235, 'Suffix')
-date_of_birth_lbl = my_gui_design.label_design(440, 305, 'Date of Birth')
-nationality_lbl = my_gui_design.label_design(1067, 305, 'Nationality')
-civil_status_lbl = my_gui_design.label_design(858, 305, 'Civil Status')
-gender_lbl = my_gui_design.label_design(650, 305, 'Gender')
-
-# Text label for second frame
-department_lbl = my_gui_design.label_design(232, 410, 'Department')
-designation_lbl = my_gui_design.label_design(498, 410, 'Designation')
-emp_status_lbl = my_gui_design.label_design(764, 410, 'Employee Status')
-emp_number_lbl = my_gui_design.label_design(1030, 410, 'Employee Number')
-emp_contact_num_lbl = my_gui_design.label_design(232, 475, 'Contact Number')
-emp_email_add_lbl = my_gui_design.label_design(498, 475, 'Email Address')
-emp_other_social_media_account_lbl = my_gui_design.label_design(764, 475, 'Other Social Media Account')
-emp_social_media_account_lbl = my_gui_design.label_design(1030, 475, 'Social Media Account')
-
-# Text label for third frame
-address_line1_lbl = my_gui_design.label_design(232, 575, 'Address Line 1')
-address_line2_lbl = my_gui_design.label_design(495, 575, 'Address Line 2')
-barangay_lbl = my_gui_design.label_design(760, 575, 'Baranggay')
-municipality_lbl = my_gui_design.label_design(1025, 575, 'Municipality')
-province_lbl = my_gui_design.label_design(232, 645, 'Province')
-zip_code_lbl = my_gui_design.label_design(498, 645, 'Zip Code')
-country_lbl = my_gui_design.label_design(764, 645, 'Country')
-picturepath_lbl = my_gui_design.label_design(1024, 645, 'Picture Path of Uploaded Image')
-
-# Combobox creation
-combo_field = ttk.Combobox(window, width=30)
-combo_field['values'] = ('Female', 'Male', 'Unidentified')
-combo_field.place(x=649, y=330)
-combo_field.current()
-
-# Adding combobox for civil status
-combo_field1 = ttk.Combobox(window, width=30)
-combo_field1['values'] = ('Single', 'Married', 'Widow', 'Legally Separated', 'Annulled')
-combo_field1.place(x=858, y=330)
-combo_field1.current()
-
-# Call image to display
-uploaded_image = my_gui_design.image_design('C:\\Users\\valde\\Documents\\GitHub\\LAB-3-FILES---VALDEZ\\LAB-3-FILES---VALDEZ\\IMAGES\\Profile.jpg', 222, 110, 200, 180)
-
-# Call for the button and place it under the image
-upload_button = my_gui_design.button_design(263, 300)
-
-# Run the application
-window.mainloop()
+root.mainloop()
