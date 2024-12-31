@@ -17,6 +17,7 @@ image_path = 'C:\\Users\\valde\\Documents\\GitHub\\LAB-3-FILES---VALDEZ\\LAB-3-F
 design.add_image(65, 160, image_path)
 
 # Basic Info Fields
+# Left Side
 design.label('Employee Number:', 65, 270)
 employee_number = design.entry(220, 270, width=27)
 design.label('Search Employee:', 65, 300)
@@ -24,6 +25,7 @@ design.button('SEARCH', 220, 300, width=16, bg='red', fg='white')
 design.label('Department:', 65, 330)
 department = design.entry(220, 330, width=27)
 
+# The remaining details will be transferred on the right side of Basic Info Fields
 fields_right = [
     ('First Name:', 140),
     ('Middle Name:', 170),
@@ -39,7 +41,7 @@ for label, y in fields_right:
     design.label(label, 470, y)
     design.entry(640, y, width=27)
 
-# Income Sections
+# Create labels and entry fields for income sections
 income_sections = [
     ('BASIC INCOME', 390),
     ('Rate / Hour:', 420),
@@ -61,6 +63,7 @@ income_sections = [
     ('Net Income:', 900)
 ]
 
+# Create labels and entry fields for income sections
 for label, y in income_sections:
     if 'INCOME' in label or 'SUMMARY INCOME' in label:
         design.label(label, 50, y, font=('Segoe UI', 12, 'bold'))
@@ -69,6 +72,7 @@ for label, y in income_sections:
         design.entry(220, y, width=27)
 
 # Deduction Sections
+# Right side
 deduction_start_y = 415
 deduction_sections = [
     ('REGULAR DEDUCTIONS', deduction_start_y),
@@ -89,6 +93,7 @@ deduction_sections = [
     ('Total Deductions:', deduction_start_y + 440)
 ]
 
+# Create labels and entry sections for deduction
 for label, y in deduction_sections:
     if 'DEDUCTIONS' in label or 'DEDUCTION SUMMARY' in label:
         design.label(label, 455, y, font=('Segoe UI', 12, 'bold'))
