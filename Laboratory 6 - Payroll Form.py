@@ -5,16 +5,16 @@ from PIL import Image, ImageTk
 
 # Main window
 window = tk.Tk()
-window.title("AV Paper N' Pixels Payroll Form")
-window.geometry('855x1080')
-window.configure(bg='#ffffef')
+window.title("Se-ri's Payroll Form")
+window.geometry('855x969')
+window.configure(bg='#edecea')
 
 # Create a class for the overall GUI
 class DesignGUI:
     def __init__(self):
         image1 = ''
 
-    def label(self, text, x, y, font=('Segoe UI', 10), width=None, bg_color='#ffffef', fg_color=None, anchor=None):
+    def label(self, text, x, y, font=('Segoe UI', 10), width=None, bg_color='#edecea', fg_color=None, anchor=None):
         lbl = Label(window, text=text, font=font, bg=bg_color, fg=fg_color, anchor=anchor)
         lbl.place(x=x, y=y, width=width)
 
@@ -24,11 +24,11 @@ class DesignGUI:
         return txt
 
     def button(self, text, x, y, width=10, command=None, bg='light gray', fg='white'):
-        btn = Button(window, text=text, width=width, command=command, font=('Tahoma', 8, 'bold'), bg=bg, fg=fg)
+        btn = Button(window, text=text, width=width, command=command, font=('Segoe UI', 7, 'bold'), bg=bg, fg=fg)
         btn.place(x=x, y=y)
 
     def frame(self, x, y, w, h):
-        frame = Frame(window, width=w, height=h, bg='#ffe99e')
+        frame = Frame(window, width=w, height=h, bg='#f6f6f6')
         frame.place(x=x, y=y)
         return frame
 
@@ -50,8 +50,7 @@ design = DesignGUI()
 header_frame = design.frame(0, 0, 855, 100)
 
 # Header Section with logo and color modifications
-design.label("AV Paper N' Pixels", 295, 15, font=('Century Gothic', 22, 'bold'), bg_color='#ffe99e')
-design.label('Payroll Form', 370, 55, font=('Century Gothic', 12, 'bold'), bg_color='#ffe99e')
+design.label("SE-RI'S PAYROLL CHOICE", 172, 25, font=('Algerian', 33, 'bold'), bg_color='#f6f6f6')
 
 # Employee Basic Info
 design.label('EMPLOYEE BASIC INFO', 40, 130, font=('Segoe UI', 12, 'bold'))
@@ -65,7 +64,7 @@ design.add_image(65, 160, image_path)
 design.label('Employee Number:', 65, 270)
 employee_number = design.entry(220, 270, width=27)
 design.label('Search Employee:', 65, 300)
-design.button('SEARCH', 220, 300, width=16, bg='#822d21', fg='white')
+design.button('SEARCH', 220, 300, width=16, bg='red', fg='white')
 design.label('Department:', 65, 330)
 department = design.entry(220, 330, width=27)
 
@@ -145,14 +144,12 @@ for label, y in deduction_sections:
         design.label(label, 470, y)
         design.entry(640, y, width=27)
 
-# Create a bottom frame around the buttons
-button_frame = design.frame(0, 960, 855, 100)
 # Buttons inside the frame
-design.button('GROSS INCOME', 60, 992, width=15, bg='#6d412a', fg='white')
-design.button('NET INCOME', 215, 992, width=15, bg='#6d412a', fg='white')
-design.button('SAVE', 370, 992, width=15, bg='#470a07', fg='white')
-design.button('UPDATE', 525, 992, width=15, bg='#470a07', fg='white')
-design.button('NEW', 680, 992, width=15, bg='#922f04', fg='white')
+design.button('GROSS INCOME', 455, 900, width=13, bg='#1379ab', fg='white')
+design.button('NET INCOME', 542, 900, width=13, bg='#1379ab', fg='white')
+design.button('SAVE', 630, 900, width=8, bg='#13abab', fg='white')
+design.button('UPDATE', 692, 900, width=8, bg='#13abab', fg='white')
+design.button('NEW', 755, 900, width=8, bg='#edd324', fg='black')
 
 # Runs the code
 window.mainloop()
