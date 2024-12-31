@@ -9,6 +9,7 @@ window.title('Employee Registration')
 window.geometry('782x1040')
 window.configure(bg='#f6f4f4')
 
+# Instantiation of DesignGUI
 gui = DesignGUI(window)
 
 # Header
@@ -27,7 +28,7 @@ gui.create_textbox(480, 163, width=26)
 gui.create_label(650, 140, 'Suffix')
 gui.create_textbox(650, 163, width=15)
 
-# Combo box Row for first frame (Date of Birth, Gender, Nationality, and Civil Status)
+# Combobox Row for first frame (Date of Birth, Gender, Nationality, and Civil Status)
 # Date of birth (Day, Month, and Year)
 gui.create_label(140, 193, 'Date of Birth')
 
@@ -97,7 +98,7 @@ gui.create_textbox(35, 330, width=53)
 gui.create_label(368, 305, 'Designation')
 gui.create_textbox(368, 330, width=33)
 
-# Qualified Dept. Status Combo box
+# Qualified Dept. Status Combobox
 gui.create_label(580, 305, 'Qualified Dept. Status')
 qualified_combo = ttk.Combobox(window, width=24, values=['Qualified', 'Pending', 'Not Qualified'])
 qualified_combo.place(x=580, y=330)
@@ -124,7 +125,7 @@ gui.create_label(580, 360, 'Employee Number')
 gui.create_textbox(580, 385, width=27)
 
 # Third Frame and 'Contact Info'
-gui.create_label(30, 450, 'Contact Info', bg='#f6f4f4', font=('Segoe UI', 11, 'bold'))
+gui.create_label(25, 450, 'Contact Info', bg='#f6f4f4', font=('Segoe UI', 11, 'bold'))
 contact_frame = gui.create_frame(20, 475, 740, 150)
 
 # Contact Information for third frame
@@ -142,7 +143,7 @@ gui.create_label(350, 545, 'Social Media Account ID/No.')
 gui.create_textbox(350, 570, width=65)
 
 # Fourth Frame and 'Address'
-gui.create_label(30, 636, 'Address', bg='#f6f4f4', font=('Segoe UI', 11, 'bold'))
+gui.create_label(25, 636, 'Address', bg='#f6f4f4', font=('Segoe UI', 11, 'bold'))
 address_frame = gui.create_frame(20, 660, 740, 315)
 
 # Address for fourth frame
