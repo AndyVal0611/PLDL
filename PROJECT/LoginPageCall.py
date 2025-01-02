@@ -1,6 +1,8 @@
 from tkinter import Tk
 from LoginPageClass import DesignGUI
 
+# Create a design input each define
+
 def background_image():
     # Load and display background image
     app.add_image(x=1, y=1, image_path='C:\\Users\\valde\\Documents\\GitHub\\LAB-3-FILES---VALDEZ\\LAB-3-FILES---VALDEZ\\IMAGES\\AV Log-in Page.png', width=1490, height=900)

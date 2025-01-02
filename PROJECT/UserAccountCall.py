@@ -2,6 +2,8 @@ from tkinter import *
 from PIL import Image, ImageTk
 from UserAccountClasses import UserAccountApplication
 
+# Create a design input each define
+
 def profileimage():
     # Load profile image
     profile_image_path = 'C:\\Users\\valde\\Documents\\GitHub\\LAB-3-FILES---VALDEZ\\LAB-3-FILES---VALDEZ\\IMAGES\\PROFILE2.jpg'

@@ -3,6 +3,8 @@ from EmployeeRegistrationClasses import DesignGUI
 from tkinter import ttk
 from PIL import Image, ImageTk
 
+# Create a design input each define
+
 def header():
     # Header
     gui.header = gui.create_heading(40, 18, "SERI'S EMPLOYEE PERSONAL INFORMATION")

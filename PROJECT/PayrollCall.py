@@ -1,6 +1,8 @@
 import tkinter as tk
 from PayrollClass import DesignGUI
 
+# Create a design input each define
+
 def create_header_section():
     # Header Section
     header_frame = design.frame(0, 0, 855, 100)
