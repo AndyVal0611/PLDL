@@ -8,7 +8,6 @@ class DesignGUI:
         self.windows = windows
         self.windows.title("AV Log-in Page")
         self.windows.geometry('1490x900')
-        self.windows.configure(bg='#F9EDED')  # Set the background color of the window
 
     # Define labels
     def label(self, text, x, y, font=('Century Gothic', 10), width=None, bg_color='#F9EDED', fg_color='#7A0E0E', anchor=None, cursor=None):
