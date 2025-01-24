@@ -6,7 +6,7 @@ from tkinter import ttk
 # Initialize the main window
 window = tk.Tk()
 window.title('Lyceum of the Philippines University Cavite - Assessment Form')
-window.geometry('1520x900')
+window.geometry('1560x1040')
 
 # Load and set the background image
 background_image_path = 'C:\\Users\\valde\\Documents\\GitHub\\LAB-3-FILES---VALDEZ\\LAB-3-FILES---VALDEZ\\IMAGES\\LPU Cavite Background.jpg'

@@ -53,15 +53,6 @@ class Metering_Billing_information:
             self.previous_reading = 0
             self.consumption_cubic_meter = 0
 
-            # billing summary data
-            self.billing_period = ""
-            self.current_charges = 0.00
-            self.basic_charge = 0.00
-            self.environmental_charges = 0.00
-            self.msc = 0.00
-            self.total_current_charges_before_taxes = 0.00
-            self.government_taxes = 0.00
-            self.rate = 23.52
         def get_metering_information(self, meter_no, mru_no, seq_no, reading_date, present_reading, previous_reading, consumption_cubic_meter):
             # get the variables given
             self.meter_no = meter_no
@@ -91,7 +82,8 @@ class Metering_Billing_information:
             print("Reopening Fee, Connection Fee, Metering Charge")
             print("-----------------------------------------------------------")
 
-        def get_billing_summary(self, billing_period, current_charges, basic_charge, environmental_charges, msc, total_current_charges_before_taxes, government_taxes, rate, consumption_cubic_meter):
+class Billing_Summary:
+        def __init__(self):
             # get the variables provided from the initialization
             self.billing_period = billing_period
             self.current_charges = current_charges
@@ -128,12 +120,3 @@ class Metering_Billing_information:
             print("-----------------------------------------------------------")
             print("TOTAL AMOUNT DUE:                                          ", self.total_amount_due)
             print("PAYMENT DUE DATE:                                          ", self.payment_due)
-
-
-
-
-
-
-
-
-
